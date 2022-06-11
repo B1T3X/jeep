@@ -1,0 +1,6 @@
+printerPath: /dev/usb/lp1
+jiraAddress: https://fichi.atlassian.net
+https:
+  port: 8443
+  certificatePath: "/home/orel/Downloads/fich.is/certificate.crt"
+  privateKeyPath: "/home/orel/Downloads/fich.is/private.key"

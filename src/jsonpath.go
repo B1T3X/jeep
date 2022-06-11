@@ -2,49 +2,45 @@ package main
 
 import (
 	"github.com/PaesslerAG/jsonpath"
-	"os"
 	"fmt"
 	"encoding/json"
-	//"reflect"
 	)
 
-type issue struct {
+type jiraIssue struct {
 	Key string
 	Description string
 	Type string
 	Reporter string
 }
 
-func main() {
+func parseIssue(issueJson []byte) (issue jiraIssue, err error) {
 	var j interface{}
-	data, err := os.ReadFile("/tmp/json.json")
-	if err != nil {
+	json.Unmarshal(issueJson, &j)
+	var issueKey interface{}
+	var issueDescription interface{}
+	var issueType interface{}
+	var issueReporter interface{}
+
+	// To simplify error handling
+	if issueKey, err = jsonpath.Get("$.issue.key", j); err != nil {
 		panic(err)
 	}
-	json.Unmarshal(data, &j)
-	//var issueKey string
-	//var issueDescription string
-	//var issueType string
-	//var issueReporter string
-	issueKey, err := jsonpath.Get("$.issue.key", j)
-	issueDescription, err := jsonpath.Get("$.issue.fields.summary", j)
-	issueType, err := jsonpath.Get("$.issue.fields.issuetype.name", j)
-	issueReporter, err := jsonpath.Get("$.issue.fields.reporter.displayName", j)
-	fmt.Println(issueKey)
-	fmt.Println(issueDescription)
-	fmt.Println(issueType)
-	fmt.Println(issueReporter)
-	myIssue := issue{
+	if issueDescription, err = jsonpath.Get("$.issue.fields.summary", j); err != nil {
+		panic(err)
+	}
+	if issueType, err = jsonpath.Get("$.issue.fields.issuetype.name", j); err != nil {
+		panic(err)
+	}
+	if issueReporter, err = jsonpath.Get("$.issue.fields.reporter.displayName", j); err != nil {
+		panic(err)
+	}
+
+	issue = jiraIssue{
 		Key: fmt.Sprintf("%v", issueKey),
 		Description: fmt.Sprintf("%v", issueDescription),
 		Type: fmt.Sprintf("%v", issueType),
 		Reporter: fmt.Sprintf("%v", issueReporter),
 	}
-
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Println(myIssue.Key)
-
+	return
 }
+
