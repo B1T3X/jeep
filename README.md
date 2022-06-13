@@ -9,7 +9,7 @@
 * Raspberry Pi Zero or any other Linux machine you can keep connected to the printer
 * Jira
 
-![Jira Issue Printer gif](https://orelfichman.com/wp-content/uploads/2022/06/jira-printer-1.gif =400x496)
+<img src="https://orelfichman.com/wp-content/uploads/2022/06/jira-printer-1.gif" width=400 height=496 style="display: block; margin-left: auto; margin-right: auto; width: 50%;"/>
 
 
 ## Setup
