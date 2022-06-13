@@ -9,6 +9,9 @@
 * Raspberry Pi Zero or any other Linux machine you can keep connected to the printer
 * Jira
 
+<img src="https://orelfichman.com/wp-content/uploads/2022/06/jira-printer-1.gif" width=400 height=496 style="display: block; margin-left: auto; margin-right: auto; width: 50%;"/>
+
+
 ## Setup
 
 1. Make sure these settings are present in `/etc/ssh/sshd_config`:
