@@ -26,7 +26,7 @@ AllowTcpForwarding yes
 4. make a directory named `config` where you placed the executable, and create & edit `config.yaml` to suit your needs
 5. Perform SSH forwarding to the remote server:
 ```sh
-ssh -R 0.0.0.0:<remote-port>:0.0.0.0<local-port> -N -f <user>@<host>
+ssh -R 0.0.0.0:<remote-port>:0.0.0.0:<local-port> -N -f <user>@<host>
 ```
 5. Launch the application (as root or a member of the `lp` group)
 6. Hear that sweet, sweet sound of thermal printing once an issue is opened
